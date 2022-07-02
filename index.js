@@ -53,6 +53,8 @@ var questionsArr = [
         ]
       },
   ]
+var PREVIOUS_SCORE = 'previous_score'
+var previousScore
 
 //on load add a start quiz button
 var quiz = document.querySelector('#quiz')
@@ -63,10 +65,23 @@ var startQuizBtnTxt = document.createTextNode('Start Quiz!')
 createStartBtn.appendChild(startQuizBtnTxt)
 quiz.appendChild(createStartBtn)
 
-//If the user has taken the quiz before, the app should ALSO display the previous score
 
+//If the user has taken the quiz before, the app should ALSO display the previous score
+if (localStorage.getItem(PREVIOUS_SCORE)) {
+  var addPrevScorePara = document.createElement('p')
+  var prevScoreTxt = document.createTextNode('Previous Score: ' + previousScore + '%')
+  addPrevScorePara.appendChild(prevScoreTxt)
+  quiz.appendChild(addPrevScorePara)
+}
+
+var startQuiz = document.querySelector('#start-quiz')
 //on click of button, start game
-//select the first question in questionsArr and display the question 
+startQuiz.onclick = startGame
+
+function startGame() {
+  //select the first question in questionsArr and display the question 
+
+}
 // in another div show the possible choices as BUTTONS
 //The quiz should also display a timer that counts down from 30 one second at a time
 //use JavaScript's setInterval and clearInterval methods to create the timer.
